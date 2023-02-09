@@ -189,7 +189,7 @@ jobs:
               | jq -r '.result[] | select( .script == "wildebeest-do" ) | .id' | awk '{print "do_cache_id="$1}' >> $GITHUB_ENV
 
       - name: Configure
-        run: terraform plan -lock=false && terraform apply -auto-approve
+        run: terraform apply -auto-approve
         working-directory: ./tf
         env:
           TF_VAR_cloudflare_account_id: ${{ secrets.CF_ACCOUNT_ID }}
